@@ -1,0 +1,116 @@
+#!/bin/bash
+while :
+ do
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo " Main Menu "
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo "Choose Any Option From Following:-"
+    echo "===================================="
+    echo "[1] Show Todays date/time"
+    echo "[2] Show calendar"
+    echo "[3] Show files in current directory"
+    echo "[4] Start editor to write letters"
+    echo "[5] Show Present working directory"
+    echo "[6] Show files in current directory (sort with time)"
+    echo "[7] To display current user"
+    echo "[8] To display currently logged in users"
+    echo "[9] To list the history of the most recent commands entered."	
+    echo "[10] To show user's email"
+    echo "[11] To print out environment meta parameters"	
+    echo "[12] To display current process ids"
+    echo "[13] To get information about all running process"
+    echo "[14] To print number of files in current directory"	
+    echo "[15] To show files in /etc/ that has .conf extension"
+    echo "[16] Power off from Terminal directly"
+    echo "[17] Exit/Quit"
+    echo "======================="
+    echo -n "Please Enter Correct Option [1-17]: "
+    read yourch
+    if [ $yourch -eq 1 ]; then
+		echo "Today is date "
+		date
+		echo " press a key. . ." 
+		read a
+		elif [ $yourch -eq 2 ]; then
+		cal 
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 3 ]; then
+		echo "Files in pwd" 
+		ls -l 
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 4 ]; then
+		vi
+	elif [ $yourch -eq 5 ]; then
+		pwd
+		echo "Press a key. . ." 
+		read
+	elif [ $yourch -eq 6 ]; then
+		echo "Sort w.r.t Time" 
+		i=1
+		ls --sort time 
+		for item in *
+		do 
+		echo "Item $((i++)) : $item"
+		done
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 7 ]; then
+		echo "Current User" 
+		whoami
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 8 ]; then
+		echo "Current logged in User" 
+		who
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 9 ]; then
+		echo "History of recent commands entered" 
+		history
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 10 ]; then
+		echo "User's email" 
+		email
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 11 ]; then
+		echo "Environment meta parameters" 
+		printenv
+		echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 12 ]; then
+		echo "Current process id's" 
+		ps
+		echo "Press a key. . ." 
+		read 
+        elif [ $yourch -eq 13 ]; then
+		echo "Information about all running processes" 
+		ps -ag
+		echo "Press a key. . ." 
+		read 
+        elif [ $yourch -eq 14 ]; then
+		echo "No. of files in current directory" 
+		ls -l | wc -l 
+		echo "Press a key. . ." 
+		read 
+        elif [ $yourch -eq 15 ]; then
+		i=1
+		for file in /etc/*.conf
+		do
+	 	echo "File $((i++)) : $file"
+		done
+                echo "Press a key. . ." 
+		read 
+	elif [ $yourch -eq 16 ]; then
+		sudo poweroff
+	elif [ $yourch -eq 17 ]; then
+		exit 0 
+    else
+		echo "Sorry :( !! Please select choice 1 to 14";
+         echo "Press a key. . ." 
+         read 
+	fi
+done

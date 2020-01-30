@@ -1,0 +1,49 @@
+#!/bin/bash
+function add()
+     		{
+		sum=`expr $a + $b`
+		echo "Sum is :$sum";
+		}
+
+function sub()
+     		{
+		difr=`expr $a - $b`
+		echo "Difference is :$difr";
+		}
+
+while :
+ do
+    echo " CHOOSE FROM FOLLOWING OPTONS ONLY "
+    echo "{1} Add two numbers"
+    echo "{2} Subtract two numbers"
+    echo "{3} To show files in /etc/ that starts with a,b,c or d"
+    echo "{4} To Quit"
+    echo -n "Enter Option [1-4]: "
+    read yourch
+    if [ $yourch -eq 1 ]; then
+		
+		echo "Enter the value of a";
+		read a
+		echo "Enter the valure of b";
+		read b
+		add
+	elif [ $yourch -eq 2 ]; then
+		
+		echo "Enter the value of a";
+		read a
+		echo "Enter the valure of b";
+		read b
+		sub
+        elif [ $yourch -eq 3 ]; then
+		i=1
+		for file in /etc/[abcd]*
+		do
+	 	echo "File $((i++)) : $file"
+		done
+	elif [ $yourch -eq 4 ]; then
+		exit 0 
+    else
+		echo "Please select choice [1-4]";
+     		read 
+     fi
+done
